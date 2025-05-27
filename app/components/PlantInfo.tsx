@@ -1,0 +1,46 @@
+import { FaLeaf, FaSun, FaTint, FaSeedling, FaGlobeAmericas, FaFlask } from 'react-icons/fa';
+
+// Define the type for the info prop
+interface PlantInfoProps {
+  info: {
+    commonName: string;
+    scientificName: string;
+    sunlight: string;
+    water: string;
+    growthRate: string;
+    origin: string;
+    description: string;
+  };
+}
+
+export default function PlantInfo({ info }: PlantInfoProps) {
+  const infoCards = [
+    { icon: FaLeaf, title: "Жалпы атауы", value: info.commonName },
+    { icon: FaFlask, title: "Ғылыми атауы", value: info.scientificName },
+    { icon: FaSun, title: "Күн сәулесі", value: info.sunlight },
+    { icon: FaTint, title: "Су қажеттілігі", value: info.water },
+    { icon: FaSeedling, title: "Өсу қарқыны", value: info.growthRate },
+    { icon: FaGlobeAmericas, title: "Шығу тегі", value: info.origin },
+  ]
+
+  return (
+    <div className="mt-8">
+      <h2 className="text-2xl font-bold text-black mb-4">Өсімдік туралы ақпарат</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {infoCards.map((card, index) => (
+          <div key={index} className="bg-white rounded-lg shadow-md p-4">
+            <div className="flex items-center mb-2">
+              <card.icon className="text-green-600 text-xl mr-2" />
+              <h3 className="font-semibold">{card.title}</h3>
+            </div>
+            <p>{card.value}</p>
+          </div>
+        ))}
+      </div>
+      <div className="mt-6 bg-white rounded-lg shadow-md p-4">
+        <h3 className="font-semibold text-lg mb-2">Сипаттама</h3>
+        <p>{info.description}</p>
+      </div>
+    </div>
+  )
+}
