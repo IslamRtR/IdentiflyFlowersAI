@@ -1,32 +1,84 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+/* app/globals.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f7f7f7;
+  --bg-card: #ffffff;
+  --bg-card-hover: #e5e7eb;
+  --text-primary: #111827;
+  --text-secondary: #4b5563;
+  --text-heading: #111827;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --ring-color: #d1d5db;
+  --nav-bg: #111827;
+  --nav-text: #f3f4f6;
+  --nav-text-hover: #d1d5db;
+  --footer-bg: #111827;
+  --footer-text: #d1d5db;
+  --footer-heading: #ffffff;
+}
 
-@keyframes gradientAnimation {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
+[data-theme='dark'] {
+  --bg-primary: #1f2937;
+  --bg-secondary: #374151;
+  --bg-card: #2d3748;
+  --bg-card-hover: #4b5563;
+  --text-primary: #f3f4f6;
+  --text-secondary: #d1d5db;
+  --text-heading: #ffffff;
+  --shadow-color: rgba(0, 0, 0, 0.3);
+  --ring-color: #6b7280;
+  --nav-bg: #1f2937;
+  --nav-text: #f3f4f6;
+  --nav-text-hover: #9ca3af;
+  --footer-bg: #1f2937;
+  --footer-text: #9ca3af;
+  --footer-heading: #ffffff;
+}
+
+html, body {
+  font-family: 'Poppins', sans-serif;
+  scroll-behavior: smooth;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.card {
+  @apply bg-[var(--bg-card)] shadow-md rounded-xl p-6 hover:bg-[var(--bg-card-hover)] hover:shadow-xl transition-shadow duration-300 ease-in-out;
+}
+
+.button-primary {
+  @apply bg-[var(--text-primary)] text-[var(--bg-primary)] font-medium py-2 px-6 rounded-lg hover:bg-[var(--text-secondary)] transition-all duration-300;
+}
+
+.heading {
+  @apply text-3xl md:text-4xl font-bold text-[var(--text-heading)] mb-6;
+}
+
+.subheading {
+  @apply text-xl text-[var(--text-secondary)] mb-4;
+}
+
+.centered {
+  @apply flex justify-center items-center;
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
   }
-  
-  .moving-gradient {
-    background: linear-gradient(-45deg, #4CAF50, #81C784, #C8E6C9, #E8F5E9);
-    background-size: 400% 400%;
-    animation: gradientAnimation 15s ease infinite;
-    min-height: 100vh;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  .content-wrapper {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-  }
-  
+}
